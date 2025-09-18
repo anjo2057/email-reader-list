@@ -1,0 +1,32 @@
+<form #emailForm="" (ngSubmit)="sendForm()">
+  <div class="form-group">
+    <label>Sender:</label>
+    <input [(ngModel)]="email.sender" [ngModelOptions]="{ standalone: true }" />
+  </div>
+
+  <div class="form-group">
+    <label> Receiver: </label>
+    <input
+      class="form-control"
+      type="text"
+      required
+      [(ngModel)]="email.reciver"
+      [ngModelOptions]="{ standalone: true }"
+      name="remail"
+      #remail="ngModel"
+      [ngClass]="remail.valid || remail.pristine ? '': 'bg-danger'"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    />
+
+    <div class="alert alert-danger" *ngIf="remail.touched && !remail.valid">
+      <div *ngIf="remail.errors && remail.errors['required']">Email is required.</div>
+      <div *ngIf="remail.errors && remail.errors['pattern']">
+        Email does not match the required pattern.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>subject</label>
+    <input [(ngModel)]="email.subject" [ngModelOptions]="{ standalone: true }" />
+  </div>
+</form>
