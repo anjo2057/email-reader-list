@@ -2,13 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Email } from '../interfaces/email';
 import { CommonModule } from '@angular/common';
+import { HighlightDirective } from './../directives/highlight.directive';
 
 @Component({
   selector: 'app-email-holder',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, HighlightDirective],
   templateUrl: './email-holder.html',
-  styleUrl: './email-holder.css',
+  styleUrls: ['./email-holder.css']
 })
 export class EmailHolder implements OnInit {
 

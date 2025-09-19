@@ -1,8 +1,9 @@
 .form-control {
-  width: 50%;        /* fills half the screen */
-  padding: 12px 16px; /* makes input taller & more spacious */
-  font-size: 16px;   /* bigger text */
-  box-sizing: border-box; /* ensures padding doesn't break width */
+  /* random styling to make the boxes nicer */
+  width: 50%;        
+  padding: 12px 16px; 
+  font-size: 16px;   
+  box-sizing: border-box; 
   border-radius: 10px;
   margin: 16px
 }
@@ -24,4 +25,5 @@
 .invalid-input {
   border: 10px solid yellow !important;
   border-radius: 8px;
+  background-color:#ff9999; /*TODO: currently overridden by directives, fails instruction*/
 }
