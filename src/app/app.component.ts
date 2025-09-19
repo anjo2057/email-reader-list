@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
+  //standalone: true,
   imports: [FormsModule, EmailHolder],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']

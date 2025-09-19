@@ -1,13 +1,12 @@
 <form #emailForm="ngForm" (ngSubmit)="sendForm()">
-   <div class="form-group">
-    <label>Sender: </label>
+  <div class="form-group">
+    <label>From: </label>
     <input
       appHighlight
       class="form-control"
-      type="text"
+      type="email"
       required
       [(ngModel)]="email.sender"
-      [ngModelOptions]="{ standalone: true }"
       name="semail"
       #semail="ngModel"
       [ngClass]="{
@@ -25,14 +24,13 @@
   </div>
 
   <div class="form-group">
-    <label> Receiver: </label>
+    <label> To: </label>
     <input
       appHighlight
       class="form-control"
-      type="text"
+      type="email"
       required
       [(ngModel)]="email.reciver"
-      [ngModelOptions]="{ standalone: true }"
       name="remail"
       #remail="ngModel"
       [ngClass]="{
@@ -57,7 +55,6 @@
       type="text"
       required
       [(ngModel)]="email.subject"
-      [ngModelOptions]="{ standalone: true }"
       name="subject"
       #subject="ngModel"
       pattern=".{10,50}"
@@ -76,20 +73,36 @@
   </div>
   <div class="form-group">
     <label>Body: </label>
-    <input
-      appHighlight
-      class="form-control"
-      type="text"
-      [(ngModel)]="email.body"
-      [ngModelOptions]="{ standalone: true }"
-    />
+    <input appHighlight class="form-control" type="text" [(ngModel)]="email.body" />
   </div>
   <br />
   <div class="text-right">
-    <button class="btn btn-primary btn-sm mr-1" type="submit" [disabled]="!emailForm.form.valid">
-      Submit Form
-    </button>
+    <button type="submit" [disabled]="!emailForm.valid">Submit Form</button>
     &nbsp;
     <button class="btn btn-primary btn-sm mr-1" type="button" (click)="clear()">Reset form</button>
   </div>
 </form>
+<div
+  style="display: flex; justify-content: left"
+  *ngIf="emails.length === 0; then emptyMessage; else tableContent"
+></div>
+<ng-template #emptyMessage>The list of emails is empty.</ng-template>
+<ng-template #tableContent
+  ><div style="display: flex; justify-content: left" *ngIf="emails.length !== 0">
+    <table>
+      <tr>
+        <th>From</th>
+        <th>Subject</th>
+      </tr>
+    </table>
+  </div></ng-template
+>
+
+<h3>TO BE DELETED Form data rn:</h3>
+
+<br />
+<p class="bg-success">
+  Id: {{ email.id }} <br />
+  Sender: {{ email.sender }} <br />
+  Receiver: {{ email.reciver }}
+</p>

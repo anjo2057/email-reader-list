@@ -27,3 +27,12 @@
   border-radius: 8px;
   background-color:#ff9999; /*TODO: currently overridden by directives, fails instruction*/
 }
+
+button {
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+th, td {
+  padding: 15px;
+}
