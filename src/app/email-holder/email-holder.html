@@ -1,12 +1,33 @@
-<form #emailForm="" (ngSubmit)="sendForm()">
+<form #emailForm="ngForm" (ngSubmit)="sendForm()">
   <div class="form-group">
-    <label>Sender:</label>
-    <input [(ngModel)]="email.sender" [ngModelOptions]="{ standalone: true }" />
+    <label>Sender: </label>
+    <input
+      appHighlight
+      class="form-control"
+      type="text"
+      required
+      [(ngModel)]="email.sender"
+      [ngModelOptions]="{ standalone: true }"
+      name="semail"
+      #semail="ngModel"
+      [ngClass]="{
+        'valid-input': semail.valid && (semail.dirty || semail.touched),
+        'invalid-input': semail.invalid && (semail.dirty || semail.touched)
+      }"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+    />
+    <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
+      <div *ngIf="semail.errors && semail.errors['required']">Email is required.</div>
+      <div *ngIf="semail.errors && semail.errors['pattern']">
+        Email does not match the required pattern.
+      </div>
+    </div>
   </div>
 
   <div class="form-group">
     <label> Receiver: </label>
     <input
+      appHighlight
       class="form-control"
       type="text"
       required
@@ -14,7 +35,10 @@
       [ngModelOptions]="{ standalone: true }"
       name="remail"
       #remail="ngModel"
-      [ngClass]="remail.valid || remail.pristine ? '': 'bg-danger'"
+      [ngClass]="{
+        'valid-input': remail.valid && (remail.dirty || remail.touched),
+        'invalid-input': remail.invalid && (remail.dirty || remail.touched)
+      }"
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
     />
 
@@ -26,7 +50,46 @@
     </div>
   </div>
   <div class="form-group">
-    <label>subject</label>
-    <input [(ngModel)]="email.subject" [ngModelOptions]="{ standalone: true }" />
+    <label>Subject: </label>
+    <input
+      appHighlight
+      class="form-control"
+      type="text"
+      required
+      [(ngModel)]="email.subject"
+      [ngModelOptions]="{ standalone: true }"
+      name="subject"
+      #subject="ngModel"
+      pattern=".{10,50}"
+      [ngClass]="{
+        'valid-input': subject.valid && (subject.dirty || subject.touched),
+        'invalid-input': subject.invalid && (subject.dirty || subject.touched)
+      }"
+    />
+
+    <div class="alert alert-danger" *ngIf="subject.touched && !subject.valid">
+      <div *ngIf="subject.errors && subject.errors['required']">A subject line is required.</div>
+      <div *ngIf="subject.errors && subject.errors['pattern']">
+        Subject must be between 10 and 50 characters.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Body: </label>
+    <input
+      appHighlight
+      class="form-control"
+      type="text"
+      [(ngModel)]="email.body"
+      [ngModelOptions]="{ standalone: true }"
+    />
+  </div>
+  <br />
+  <div class="text-right">
+    <button class="btn btn-primary btn-sm mr-1" type="submit" [disabled]="!emailForm.form.valid">
+      Submit Form
+    </button>
+    &nbsp;
+    <button class="btn btn-primary btn-sm mr-1" type="button" (click)="clear()">Reset form</button>
   </div>
 </form>

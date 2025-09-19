@@ -24,15 +24,7 @@ export class EmailHolder implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {
-    // this.email = {
-    //   id: 1,
-    //   sender: 'sender@example.com',
-    //   reciver: 'receiver@example.com',
-    //   subject: 'Hello World',
-    //   body: 'This is a test email body.',
-    // };
-  }
+  ngOnInit(): void {}
 
   sendForm(): void {
 
