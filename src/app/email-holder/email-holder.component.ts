@@ -20,7 +20,7 @@ export class EmailHolder implements OnInit {
     sender: '',
     reciver: '',
     subject: '',
-    body: null,
+    body: '',
   };
 
   // List of emails to show in table
@@ -40,7 +40,6 @@ export class EmailHolder implements OnInit {
       "The email '" + latestEmail.subject + "' has been sent to '" + latestEmail.reciver + "'."
     );
 
-    //console.log(this.emails[0].sender);
 
     this.clear();
   }

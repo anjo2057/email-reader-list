@@ -14,8 +14,15 @@
 }
 
 .ng-invalid:not(form), .ng-invalid.required  {
-  border-left: 10px solid red; 
+  color: 10px solid red;  /* Not i use, maybe remove */
 }
+
+.pattern-error {
+    border: 10px solid red !important;
+    background-color: #fd0000 !important;
+}
+
+
 
 .valid-input {
   border: 10px solid green !important;
@@ -23,9 +30,9 @@
 }
 
 .invalid-input {
-  border: 10px solid yellow !important;
+  border: 10px solid yellow ;
   border-radius: 8px;
-  background-color:#ff9999; /*TODO: currently overridden by directives, fails instruction*/
+  /* background-color:#ff9999; /*TODO: currently overridden by directives, fails instruction*/
 }
 
 button {

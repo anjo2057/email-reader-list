@@ -9,10 +9,15 @@
       [(ngModel)]="email.sender"
       name="semail"
       #semail="ngModel"
-      [ngClass]="{
-        'valid-input': semail.valid && (semail.dirty || semail.touched),
-        'invalid-input': semail.invalid && (semail.dirty || semail.touched)
-      }"
+      [ngClass]="
+        semail.errors?.['pattern'] && semail.touched
+          ? 'pattern-error'
+          : semail.valid && (semail.dirty || semail.touched)
+          ? 'valid-input'
+          : semail.invalid && (semail.dirty || semail.touched)
+          ? 'invalid-input'
+          : ''
+      "
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
     />
     <div class="alert alert-danger" *ngIf="semail.touched && !semail.valid">
@@ -33,10 +38,15 @@
       [(ngModel)]="email.reciver"
       name="remail"
       #remail="ngModel"
-      [ngClass]="{
-        'valid-input': remail.valid && (remail.dirty || remail.touched),
-        'invalid-input': remail.invalid && (remail.dirty || remail.touched)
-      }"
+      [ngClass]="
+        remail.errors?.['pattern'] && remail.touched
+          ? 'pattern-error'
+          : remail.valid && (remail.dirty || remail.touched)
+          ? 'valid-input'
+          : remail.invalid && (remail.dirty || remail.touched)
+          ? 'invalid-input'
+          : ''
+      "
       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
     />
 
@@ -58,10 +68,15 @@
       name="subject"
       #subject="ngModel"
       pattern=".{10,50}"
-      [ngClass]="{
-        'valid-input': subject.valid && (subject.dirty || subject.touched),
-        'invalid-input': subject.invalid && (subject.dirty || subject.touched)
-      }"
+      [ngClass]="
+        subject.errors?.['pattern'] && subject.touched
+          ? 'pattern-error'
+          : subject.valid && (subject.dirty || subject.touched)
+          ? 'valid-input'
+          : subject.invalid && (subject.dirty || subject.touched)
+          ? 'invalid-input'
+          : ''
+      "
     />
 
     <div class="alert alert-danger" *ngIf="subject.touched && !subject.valid">
@@ -73,7 +88,14 @@
   </div>
   <div class="form-group">
     <label>Body: </label>
-    <input appHighlight class="form-control" type="text" [(ngModel)]="email.body" />
+    <input
+      appHighlight
+      class="form-control"
+      type="text"
+      [(ngModel)]="email.body"
+      name="body"
+      #sbody="ngModel"
+    />
   </div>
   <br />
   <div class="text-right">
@@ -86,15 +108,20 @@
   style="display: flex; justify-content: left"
   *ngIf="emails.length === 0; then emptyMessage; else tableContent"
 ></div>
+
 <ng-template #emptyMessage>The list of emails is empty.</ng-template>
 <ng-template #tableContent
   ><div style="display: flex; justify-content: left" *ngIf="emails.length !== 0">
-    <table>
-      <tr>
-        <th>From</th>
-        <th>Subject</th>
-      </tr>
-    </table>
+    <h3>List of emails:</h3>
+    <br />
+    <p class="bg-success" *ngFor="let email of emails">
+      <br />
+      Id: {{ email.id }} <br />
+      Sender: {{ email.sender }} <br />
+      Receiver: {{ email.reciver }} <br />
+      Subject: {{ email.subject }} <br />
+      Body: {{ email.body }}
+    </p>
   </div></ng-template
 >
 
