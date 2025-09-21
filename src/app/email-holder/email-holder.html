@@ -104,32 +104,24 @@
     <button class="btn btn-primary btn-sm mr-1" type="button" (click)="clear()">Reset form</button>
   </div>
 </form>
-<div
-  style="display: flex; justify-content: left"
-  *ngIf="emails.length === 0; then emptyMessage; else tableContent"
-></div>
 
-<ng-template #emptyMessage>The list of emails is empty.</ng-template>
-<ng-template #tableContent
-  ><div style="display: flex; justify-content: left" *ngIf="emails.length !== 0">
-    <h3>List of emails:</h3>
-    <br />
-    <p class="bg-success" *ngFor="let email of emails">
-      <br />
-      Id: {{ email.id }} <br />
-      Sender: {{ email.sender }} <br />
-      Receiver: {{ email.reciver }} <br />
-      Subject: {{ email.subject }} <br />
-      Body: {{ email.body }}
-    </p>
-  </div></ng-template
->
+<ng-container *ngIf="emails && emails.length > 0; else emptyMessage">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>To</th>
+        <th>From</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let email of emails">
+        <td>{{ email.sender }}</td>
+        <td>{{ email.reciver }}</td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
 
-<h3>TO BE DELETED Form data rn:</h3>
-
-<br />
-<p class="bg-success">
-  Id: {{ email.id }} <br />
-  Sender: {{ email.sender }} <br />
-  Receiver: {{ email.reciver }}
-</p>
+<ng-template #emptyMessage>
+  <p>The list of emails is empty.</p>
+</ng-template>
