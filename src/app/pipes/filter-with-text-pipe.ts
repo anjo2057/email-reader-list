@@ -6,7 +6,7 @@ import { EmailService } from '../services/email-service';
   pure: false
 })
 @Injectable()
-export class Ng2SearchPipe implements PipeTransform {
+export class FilterWithTextPipe implements PipeTransform {
 
   /**
      * @param items object from array
@@ -16,7 +16,7 @@ export class Ng2SearchPipe implements PipeTransform {
   transform(items: any, term: string, excludes: any = []): any {
     if (!term || !items) return items;
 
-    return Ng2SearchPipe.filter(items, term, excludes);
+    return FilterWithTextPipe.filter(items, term, excludes);
   }
 
   /**

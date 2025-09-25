@@ -119,7 +119,6 @@
         <th>To</th>
         <th>From</th>
         <th>Subject</th>
-        <th>Body</th>
       </tr>
     </thead>
     <tbody>
@@ -127,11 +126,13 @@
         <td>{{ email.sender }}</td>
         <td>{{ email.reciver }}</td>
         <td>{{ email.subject }}</td>
-        <td>{{ email.body }}</td>
+         <td><button (click)="showEmailInfo()">View</button> </td>
+         <!-- TODO: hur fan implementerar man showEmailInfo() ???-->
       </tr>
     </tbody>
   </table>
 </ng-container>
+
 
 <ng-template #emptyMessage>
   <p>The list of emails is empty.</p>
