@@ -14,6 +14,10 @@ export class EmailService {
   };
 
   emails: Email[] = [];
+  
+  ngOnInit() {
+    this.emails = this.createDb();
+  }
 
   constructor() {}
 
@@ -69,10 +73,10 @@ export class EmailService {
         body: 'Wishing you a wonderful birthday and a great year ahead!',
       },
     ];
-    return emails; 
+    return emails;
   }
 
-  sendEmail(email: Email): void {
+  sendEmail(): void {
     const latestEmail: Email = { ...this.email, id: this.emails.length + 1 };
     this.emails.push(latestEmail);
   }
@@ -85,7 +89,7 @@ export class EmailService {
     this.emails = [];
   }
 
-  getEmailList(): Email[] | null {
+  getEmailList(): Email[] {
     return this.emails;
   }
 
