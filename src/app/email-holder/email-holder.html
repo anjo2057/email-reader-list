@@ -52,7 +52,7 @@
 
     <div class="alert alert-danger" *ngIf="remail.touched && !remail.valid">
       <div *ngIf="remail.errors && remail.errors['required']">Email is required.</div>
-      <div *ngIf="remail.errors && remail.errors['pattern']">
+      <div *ngIf="remail.errors && remail.errors['pattern']" style="width: 50%;">
         Email does not match the required pattern.
       </div>
     </div>

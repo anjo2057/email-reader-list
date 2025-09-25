@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { HighlightDirective } from './../directives/highlight.directive';
 
 @Component({
-  selector: 'app-email-holder',
+  selector: 'email-holder',
   imports: [FormsModule, CommonModule, HighlightDirective],
   templateUrl: './email-holder.html',
   styleUrls: ['./email-holder.css'],

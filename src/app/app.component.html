@@ -1,2 +1,24 @@
-<app-email-holder></app-email-holder>
-    
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Email Reader List</h1>
+    <p>Web assignment - Programming of User Interfaces - 25/26</p>
+    <div class="row navbar">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary mr-2" id="dropdownBasic1" ngbDropdownToggle>
+            Assignments
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem>
+              <a routerLink="/email-holder"> first email email-holder </a>
+            </button>
+            <button ngbDropdownItem>
+              <a routerLink="/email-with-service"> Second email with pipes </a>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>
