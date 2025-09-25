@@ -105,7 +105,9 @@
   </div>
 </form>
 
-<div><label>Här ska det filtreras:</label> <input /></div>
+<div><label>Här ska det filtreras:</label> 
+    <input type="text" [(ngModel)]="filterText" />
+</div>
 
 <input type="checkbox" id="idfk" name="bodies" value="Bike" [(ngModel)]="filterByBody" />
 <label for="vehicle1"> I want to only see emails with a body</label><br />
@@ -116,13 +118,16 @@
       <tr>
         <th>To</th>
         <th>From</th>
+        <th>Subject</th>
+        <th>Body</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let email of emails | emailPipe: filterByBody">
+      <tr *ngFor="let email of emails | emailPipe : filterByBody">
         <td>{{ email.sender }}</td>
         <td>{{ email.reciver }}</td>
         <td>{{ email.subject }}</td>
+        <td>{{ email.body }}</td>
       </tr>
     </tbody>
   </table>
