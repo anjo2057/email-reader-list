@@ -8,16 +8,15 @@ import { EmailService } from '../services/email-service';
 export class EmailPipePipe implements PipeTransform {
   constructor(private emailService: EmailService) {}
 
-  transform(value: unknown, ...args: unknown[]): Email | null {
+  transform(emails: Email[], filterByBody: boolean): Email[] {
     let emailswithbody: Email[] = [];
 
-    for (let i = 0; i < this.emailService.getEmailList().length; i++) {
-      const emailList: Email[] = this.emailService.getEmailList();
-      const element: Email = emailList[i];
-      if (element.body !== '') {
+    for (let i = 0; i < emails.length; i++) {
+      const element: Email = emails[i];
+      if (element.body !== '' && filterByBody) {
         emailswithbody.push(element);
       }
     }
-    return emailswithbody.length > 0 ? emailswithbody[0] : null;
+    return emailswithbody.length > 0 ? emailswithbody : emails;
   }
 }

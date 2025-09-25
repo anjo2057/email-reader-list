@@ -6,15 +6,18 @@ import { Email } from '../interfaces/email';
 import { CommonModule } from '@angular/common';
 import { HighlightDirective } from './../directives/highlight.directive';
 import { EmailService } from '../services/email-service';
+import { EmailPipePipe } from '../pipes/email-pipe-pipe';
 
 @Component({
   selector: 'email-with-service',
-  imports: [FormsModule, CommonModule, HighlightDirective],
+  imports: [FormsModule, CommonModule, HighlightDirective, EmailPipePipe],
   templateUrl: './email-with-service.html',
   styleUrls: ['./email-with-service.css'],
 })
 export class EmailWithService implements OnInit {
   @ViewChild('emailForm') emailForm: any;
+
+  filterByBody: boolean = false;
 
   emails: Email[] = [];
 
@@ -27,6 +30,7 @@ export class EmailWithService implements OnInit {
   };
   
   constructor(private emailService: EmailService) {}
+
 
   ngOnInit(): void {
     this.emails = this.emailService.createDb();

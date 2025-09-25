@@ -56,14 +56,14 @@ export class EmailService {
         sender: 'ivan@example.com',
         reciver: 'judy@example.com',
         subject: 'Password Reset',
-        body: 'Click the link below to reset your password.',
+        body: '',
       },
       {
         id: 6,
         sender: 'mallory@example.com',
         reciver: 'oscar@example.com',
         subject: 'Conference Details',
-        body: 'Here are the details for the upcoming conference.',
+        body: '',
       },
       {
         id: 7,
