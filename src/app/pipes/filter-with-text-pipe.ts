@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform , Injectable} from '@angular/core';
-import { EmailService } from '../services/email-service';
 
 @Pipe({
   name: 'filterWithText',

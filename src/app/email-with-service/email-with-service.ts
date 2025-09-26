@@ -8,10 +8,11 @@ import { HighlightDirective } from './../directives/highlight.directive';
 import { EmailService } from '../services/email-service';
 import { EmailPipePipe } from '../pipes/email-pipe-pipe';
 import { Observable } from 'rxjs';
+import { FilterWithTextPipe } from '../pipes/filter-with-text-pipe';
 
 @Component({
   selector: 'email-with-service',
-  imports: [FormsModule, CommonModule, HighlightDirective, EmailPipePipe],
+  imports: [FormsModule, CommonModule, HighlightDirective, EmailPipePipe, FilterWithTextPipe],
   templateUrl: './email-with-service.html',
   styleUrls: ['./email-with-service.css'],
 })
@@ -27,6 +28,8 @@ export class EmailWithService implements OnInit {
     body: '',
   };
   emails: Email[] = [];
+  
+  filterText: string = '';
 
   email: Email = {
     id: 0,
