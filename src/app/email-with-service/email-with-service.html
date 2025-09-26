@@ -105,8 +105,9 @@
   </div>
 </form>
 
-<div><label>Här ska det filtreras:</label> 
-    <input type="text" [(ngModel)]="filterText" />
+<div>
+  <label>Här ska det filtreras:</label>
+  <!-- <input type="text" [(ngModel)]="filterText" /> -->
 </div>
 
 <input type="checkbox" id="idfk" name="bodies" value="Bike" [(ngModel)]="filterByBody" />
@@ -126,13 +127,25 @@
         <td>{{ email.sender }}</td>
         <td>{{ email.reciver }}</td>
         <td>{{ email.subject }}</td>
-         <td><button (click)="showEmailInfo()">View</button> </td>
-         <!-- TODO: hur fan implementerar man showEmailInfo() ???-->
+        <td>
+        <button (click)="showEmailInfo(email)" class="btn btn-primary btn-sm mr-1">View</button>
+        <div *ngIf="selectedEmail?.id === email.id">
+            ID: {{ selectedEmail.id }} <br />
+            From: {{ selectedEmail.sender }} <br />
+            To: {{ selectedEmail.reciver }} <br />
+            Subject: {{ selectedEmail.subject }} <br /> 
+            Body: {{ selectedEmail.body }} <br />
+        </div>
+        <!-- TODO: hur fan implementerar man showEmailInfo() ???-->
+        <!-- <div class="alert alert-success alert-dismissable" *ngIf="email">
+          <h4>
+            We have a student to view!! <br />
+          </h4>
+        </div> -->
       </tr>
     </tbody>
   </table>
 </ng-container>
-
 
 <ng-template #emptyMessage>
   <p>The list of emails is empty.</p>

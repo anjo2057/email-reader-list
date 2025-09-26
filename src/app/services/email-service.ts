@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Email } from '../interfaces/email';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -93,7 +94,8 @@ export class EmailService {
     return this.emails;
   }
 
-  getEmail(id: number): Email | null {
-    return this.emails[id];
+  getEmail(id: number): Observable<Email | null> {
+    const email = this.emails.find((email) => email.id === id) || null;
+    return of(email);
   }
 }
