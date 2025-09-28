@@ -1,1 +1,45 @@
-<p>email-list works!</p>
+<button (click)="redirect1()" class="btn btn-primary btn-sm mr-1"> New Email</button>&nbsp;
+<button (click)="update()" class="btn btn-primary btn-sm mr-1"> Update list</button>&nbsp;
+<div style="display: flex; flex-direction: column; align-items: flex-start"></div>
+<label style="align-self: flex-start; text-align: left; width: 100%">Filter by text: </label>
+<input type="text" class="form-control" [(ngModel)]="filterText" />
+
+<input type="checkbox" id="idfk" name="bodies" value="Bike" [(ngModel)]="filterByBody" />
+<label for="vehicle1"> I want to only see emails with a body</label><br />
+
+<ng-container *ngIf="emails && emails.length > 0; else emptyMessage">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>To</th>
+        <th>From</th>
+        <th>Subject</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let email of emails | emailPipe : filterByBody | filterWithText : filterText">
+        <td>{{ email.sender }}</td>
+        <td>{{ email.reciver }}</td>
+        <td>{{ email.subject }}</td>
+        <td>
+          <button (click)="redirect(email)" class="btn btn-primary btn-sm mr-1">View</button>&nbsp;
+
+          <button (click)="deleteEmail(email.id)" class="btn btn-primary btn-sm mr-1">
+            Delete
+          </button>
+          <div *ngIf="selectedEmail?.id === email.id">
+            ID: {{ selectedEmail.id }} <br />
+            From: {{ selectedEmail.sender }} <br />
+            To: {{ selectedEmail.reciver }} <br />
+            Subject: {{ selectedEmail.subject }} <br />
+            Body: {{ selectedEmail.body }} <br />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+
+<ng-template #emptyMessage>
+  <p>The list of emails is empty.</p>
+</ng-template>

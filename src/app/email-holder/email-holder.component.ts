@@ -32,7 +32,7 @@ export class EmailHolder implements OnInit {
 
   sendForm(): void {
     //ID increases incrementally
-    const latestEmail: Email = { ...this.email, id: this.emails.length + 1 }; //TODO: const right? seemed most reasonable
+    const latestEmail: Email = { ...this.email, id: this.emails.length + 1 };
 
     this.emails.push(latestEmail);
 

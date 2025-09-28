@@ -1,0 +1,20 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>To</th>
+      <th>From</th>
+      <th>Subject</th>
+      <th>Body</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <td>{{ email.sender }}</td>
+    <td>{{ email.reciver }}</td>
+    <td>{{ email.subject }}</td>
+    <td>{{ email.body }}</td>
+
+    <td></td>
+    <button (click)="goBack()" class="btn btn-primary btn-sm mr-1">Back</button>
+  </tbody>
+</table>

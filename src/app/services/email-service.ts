@@ -15,7 +15,7 @@ export class EmailService {
   };
 
   emails: Email[] = [];
-  
+
   ngOnInit() {
     this.emails = this.createDb();
   }
@@ -79,11 +79,16 @@ export class EmailService {
 
   sendEmail(): void {
     const latestEmail: Email = { ...this.email, id: this.emails.length + 1 };
+
     this.emails.push(latestEmail);
+
+    window.alert(
+      "The email '" + latestEmail.subject + "' has been sent to '" + latestEmail.reciver + "'."
+    );
   }
 
   deleteEmail(id: number): void {
-    this.emails.splice(id, 1); //TODO: might not work unsure of indexing
+    this.emails.splice(id - 1, 1);
   }
 
   deleteAllEmail(): void {

@@ -28,7 +28,7 @@ export class EmailWithService implements OnInit {
     body: '',
   };
   emails: Email[] = [];
-  
+
   filterText: string = '';
 
   email: Email = {
@@ -54,7 +54,6 @@ export class EmailWithService implements OnInit {
   }
 
   getEmail(id: number): Observable<Email | null> {
-    // const url = `api/emails/${id}`; // TODO : kanske testa med url istället
     return this.emailService.getEmail(id);
   }
 

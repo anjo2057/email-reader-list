@@ -1,0 +1,35 @@
+
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 10px solid green; /* green */
+}
+
+.ng-invalid:not(form), .ng-invalid.required  {
+  color: 10px solid red;  /* Not i use, maybe remove */
+}
+
+.pattern-error {
+    border: 10px solid red !important;
+    background-color: #fd0000 !important;
+}
+
+
+
+.valid-input {
+  border: 10px solid green !important;
+  border-radius: 8px;
+}
+
+.invalid-input {
+  border: 10px solid yellow ;
+  border-radius: 8px;
+}
+
+button {
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+th, td {
+  padding: 15px;
+}
