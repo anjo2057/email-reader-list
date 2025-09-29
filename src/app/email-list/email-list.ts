@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { FilterWithTextPipe } from '../pipes/filter-with-text-pipe';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AppRoutingModule } from '../app.routes';
 
 @Component({
   selector: 'app-email-list',
