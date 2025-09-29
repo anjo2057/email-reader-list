@@ -65,15 +65,17 @@ export class EmailList implements OnInit {
       this.email.subject = params1.get('p4') as string;
       this.email.body = params1.get('p5') as string;
       if (this.email.id !== this.emails.length) {
-        this.emails.push(this.email);
+        if (this.email.sender !== null && this.email.reciver !== null && this.email.subject !== null) {
+          this.emails.push(this.email);
+        }
         this.email = {
           id: 0,
-          sender: '',
-          reciver: '',
-          subject: '',
-          body: '',
+          sender: null as any,
+          reciver: null as any,
+          subject: null as any,
+          body: null as any,
         };
-        this.router.navigate(['/email-list/:value']);
+        this.router.navigate(['/email-list/:']);
       }
     });
   }
